@@ -20,73 +20,73 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class LoginActivity extends AppCompatActivity {
+public class RegistrationActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
 
-    private EditText loginEmail, loginPwd;
-    private Button loginButton;
-    private TextView loginPageQuestion;
-
+    private EditText regEmail, regPwd;
+    private Button regButton;
+    private TextView regPageQuestion;
     private FirebaseAuth mAuth;
+
     private ProgressDialog loader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_registration);
 
         toolbar = findViewById(R.id.loginToolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Login");
+        //getSupportActionBar().setTitle("Registration");
 
         mAuth = FirebaseAuth.getInstance();
         loader = new ProgressDialog(this);
 
-        loginEmail = findViewById(R.id.loginEmail);
-        loginPwd = findViewById(R.id.loginPwd);
-        loginButton = findViewById(R.id.loginButton);
-        loginPageQuestion = findViewById(R.id.loginPageQuestion);
+        regEmail = findViewById(R.id.regEmail);
+        regPwd = findViewById(R.id.regPwd);
+        regButton = findViewById(R.id.regButton);
+        regPageQuestion = findViewById(R.id.regPageQuestion);
 
-        loginPageQuestion.setOnClickListener(new View.OnClickListener() {
+        regPageQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
+                Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        regButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = loginEmail.getText().toString().trim();
-                String password = loginPwd.getText().toString().trim();
+                String email = regEmail.getText().toString().trim();
+                String password = regPwd.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)){
-                    loginEmail.setError("Email is required");
+                    regEmail.setError("Email is required");
                     return;
                 }
                 if (TextUtils.isEmpty(password)){
-                    loginPwd.setError("Password is required");
+                    regPwd.setError("Password is required");
                     return;
-                }else {
-                    loader.setMessage("Login in Progress");
+                }else{
+                    loader.setMessage("Registration in progress");
                     loader.setCanceledOnTouchOutside(false);
                     loader.show();
-
-                    mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()){
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                Intent intent = new Intent(RegistrationActivity.this, MainActivity.class);
                                 startActivity(intent);
                                 finish();
                                 loader.dismiss();
                             }else {
                                 String error = task.getException().toString();
-                                Toast.makeText(LoginActivity.this, "Login failed" + error, Toast. LENGTH_SHORT).show();
+                                Toast.makeText(RegistrationActivity.this, "Registration failed" + error, Toast.LENGTH_SHORT).show();
                                 loader.dismiss();
                             }
+
                         }
                     });
                 }

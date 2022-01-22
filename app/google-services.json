@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "695365142689",
+    "project_id": "upgreen-app",
+    "storage_bucket": "upgreen-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695365142689:android:bc00eb99f35a505f6b48e0",
+        "android_client_info": {
+          "package_name": "com.example.upgreen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "695365142689-v17qvb5ofealetbtljnpb42dgp2qrr14.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.upgreen",
+            "certificate_hash": "6ad8f7b338e115f218f3bd8d5a5a5b42d05f4144"
+          }
+        },
+        {
+          "client_id": "695365142689-6eq05cmadll1i8h304lvv9ibr19clvfe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpUduVN8aVMKwoXnZy7jmERDdSR76BM8Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "695365142689-6eq05cmadll1i8h304lvv9ibr19clvfe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
