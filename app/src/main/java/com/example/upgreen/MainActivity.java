@@ -73,17 +73,17 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Personal Budgeting App");
+        getSupportActionBar().setTitle("UPGREEN");
 
         goalTv = findViewById(R.id.goalTv);
         todaySpendingTv = findViewById(R.id.todaySpendingTv);
-        remaininggoalTv = findViewById(R.id.remaininggoalTv);
+        //remaininggoalTv = findViewById(R.id.remaininggoalTv);
         monthSpendingTv = findViewById(R.id.monthSpendingTv);
         weekSpendingTv = findViewById(R.id.weekSpendingTv);
 
         mAuth = FirebaseAuth.getInstance();
         onlineUserID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        goalRef = FirebaseDatabase.getInstance().getReference("budget").child(onlineUserID);
+        goalRef = FirebaseDatabase.getInstance().getReference("goal").child(onlineUserID);
         expensesRef = FirebaseDatabase.getInstance().getReference("expenses").child(onlineUserID);
         personalRef = FirebaseDatabase.getInstance().getReference("personal").child(onlineUserID);
 
@@ -134,9 +134,9 @@ public class MainActivity extends AppCompatActivity {
                         totalAmountBudgetB+=pTotal;
                     }
                     totalAmountBudgetC = totalAmountBudgetB;
-                    personalRef.child("budget").setValue(totalAmountBudgetC);
+                    personalRef.child("goal").setValue(totalAmountBudgetC);
                 }else {
-                    personalRef.child("budget").setValue(0);
+                    personalRef.child("goal").setValue(0);
                     Toast.makeText(MainActivity.this, "Please Set a BUDGET ", Toast.LENGTH_LONG).show();
                 }
 
@@ -153,7 +153,6 @@ public class MainActivity extends AppCompatActivity {
         getTodaySpentAmount();
         getWeekSpentAmount();
         getMonthSpentAmount();
-        getSavings();
     }
 
     private void getBudgetAmount() {
@@ -167,15 +166,13 @@ public class MainActivity extends AppCompatActivity {
                         Object total = map.get("amount");
                         int pTotal = Integer.parseInt(String.valueOf(total));
                         totalAmountBudget+=pTotal;
-                        goalTv.setText("kg "+String.valueOf(totalAmountBudget));
+                        goalTv.setText("kg "+ String.valueOf(totalAmountBudget));
                     }
                 }else {
                     totalAmountBudget=0;
-                    goalTv.setText(String.valueOf(0));
-
+                    goalTv.setText("kg "+ String.valueOf(0));
 
                 }
-
 
             }
 
@@ -276,37 +273,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void getSavings(){
-        personalRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull final DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-
-                    int budget;
-                    if (snapshot.hasChild("budget")) {
-                        budget = Integer.parseInt(snapshot.child("budget").getValue().toString());
-                    } else {
-                        budget = 0;
-                    }
-                    int monthSpending;
-                    if (snapshot.hasChild("month")) {
-                        monthSpending = Integer.parseInt(Objects.requireNonNull(snapshot.child("month").getValue().toString()));
-                    } else {
-                        monthSpending = 0;
-                    }
-
-                    int savings = budget - monthSpending;
-                    remaininggoalTv.setText("kg "+savings);
-
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -64,15 +64,20 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
+
                 <Button
                     android:id="@+id/cancel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginBottom="2dp"
                     android:text="Cancel"
                     android:textAllCaps="false"
                     android:textColor="#000"
-                    android:textStyle="bold"
-                    android:layout_margin="2dp"/>
+                    app:backgroundTint="#4B7E4D"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
 
@@ -80,15 +85,20 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
+
                 <Button
                     android:id="@+id/save"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginBottom="2dp"
                     android:text="Save"
                     android:textAllCaps="false"
                     android:textColor="#000"
-                    android:textStyle="bold"
-                    android:layout_margin="2dp"/>
+                    app:backgroundTint="#4B7E4D"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
         </LinearLayout>

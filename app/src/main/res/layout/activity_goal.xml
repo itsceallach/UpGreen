@@ -41,7 +41,7 @@
             android:layout_gravity="bottom|end"
             app:fabSize="normal"
             android:id="@+id/fab"
-            app:backgroundTint="#000"
+            app:backgroundTint="#4B7E4D"
             android:src="@drawable/ic_baseline_add_24"
             android:layout_margin="16dp"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

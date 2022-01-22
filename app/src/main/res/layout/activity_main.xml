@@ -35,7 +35,7 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="Goal"
-                android:textColor="#fff"
+                android:textColor="#000"
                 android:textSize="12dp"
                 android:textStyle="bold" />
 
@@ -47,7 +47,7 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="Today"
-                android:textColor="#fff"
+                android:textColor="#000"
                 android:textSize="12dp"
                 android:textStyle="bold" />
 
@@ -59,7 +59,7 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="Week"
-                android:textColor="#fff"
+                android:textColor="#000"
                 android:textSize="12dp"
                 android:textStyle="bold" />
 
@@ -71,21 +71,10 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="Month"
-                android:textColor="#fff"
+                android:textColor="#000"
                 android:textSize="12dp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/borders"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="Savings"
-                android:textColor="#fff"
-                android:textSize="12dp"
-                android:textStyle="bold" />
         </TableRow>
 
         <TableRow>
@@ -99,7 +88,7 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="Ksh 0"
-                android:textColor="#fff"
+                android:textColor="#000"
                 android:textSize="12dp" />
 
             <TextView
@@ -111,7 +100,7 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="Ksh 0"
-                android:textColor="#fff"
+                android:textColor="#000"
                 android:textSize="12dp" />
 
             <TextView
@@ -123,7 +112,7 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="Ksh 0"
-                android:textColor="#fff"
+                android:textColor="#000"
                 android:textSize="12dp" />
 
             <TextView
@@ -135,20 +124,9 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="Ksh 0"
-                android:textColor="#fff"
+                android:textColor="#000"
                 android:textSize="12dp" />
 
-            <TextView
-                android:id="@+id/remaininggoalTv"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/borders"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="Ksh 0"
-                android:textColor="#fff"
-                android:textSize="12dp" />
         </TableRow>
     </TableLayout>
 
@@ -403,7 +381,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="16dp"
-            android:backgroundTint="#000"
+            android:backgroundTint="#4B7E4D"
             android:src="@drawable/ic_baseline_add_24"
             app:fabSize="normal" />
 
