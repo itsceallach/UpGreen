@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TextView weekSpendingTv, goalTv, todaySpendingTv,remaininggoalTv,monthSpendingTv;
 
-    private CardView recoCardView, todayCardView, historyCardView, goalbtn;
+    private CardView recoCardView, todayCardView, historyCardView, MapCardView, goalbtn;
 
     private CardView analyticsCardView;
 
@@ -118,6 +118,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
+                startActivity(intent);
+            }
+        });
+        MapCardView = findViewById(R.id.MapCardView);
+        MapCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MapActivity.class);
                 startActivity(intent);
             }
         });

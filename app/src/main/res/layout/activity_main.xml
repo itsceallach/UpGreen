@@ -147,7 +147,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
             android:columnCount="2"
-            android:rowCount="3">
+            android:rowCount="4">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/goalbtn"
@@ -367,6 +367,41 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="History"
+                        android:textAlignment="center"
+                        android:textColor="#000"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/MapCardView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="3"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="8dp"
+                android:background="#fff"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="8dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/ic_baseline_history_24"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Map"
                         android:textAlignment="center"
                         android:textColor="#000"
                         android:textStyle="bold" />
