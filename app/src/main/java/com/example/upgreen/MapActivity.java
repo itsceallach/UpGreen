@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.common.api.Status;
 import com.google.android.libraries.places.api.Places;
@@ -24,9 +25,10 @@ import java.util.List;
 import java.util.Locale;
 
 public class MapActivity extends AppCompatActivity {
-
+    //Initialize Variables
+    private Toolbar toolbar;
     EditText etSource, etDestination;
-    TextView textView;
+    TextView textView, textView2;
     String sType;
     double lat1 = 0, long1 = 0, lat2 = 0, long2 = 0;
     int flag = 0;
@@ -36,19 +38,26 @@ public class MapActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
+        //Assign Variables
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Map");
+
         etSource = findViewById(R.id.et_source);
         etDestination = findViewById(R.id.et_destination);
         textView = findViewById(R.id.text_view);
+        textView2 = findViewById(R.id.text_view2);
 
+        //Initialize Places
         Places.initialize(getApplicationContext(), "AIzaSyC-ojVdEScnA3e1POn2VESQWS3eq35mfTw");
 
         etSource.setFocusable(false);
         etSource.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //Define type
                 sType = "source";
-
+                //Initialize place field list
                 List<Place.Field> fields = Arrays.asList(Place.Field.ADDRESS, Place.Field.LAT_LNG);
 
                 Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY,fields).build(MapActivity.this);
@@ -59,8 +68,9 @@ public class MapActivity extends AppCompatActivity {
         etDestination.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Define type
                 sType = "destination";
-
+                //Initialize place field list
                 List<Place.Field> fields = Arrays.asList(Place.Field.ADDRESS, Place.Field.LAT_LNG);
 
                 Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY,fields).build(MapActivity.this);
@@ -70,12 +80,12 @@ public class MapActivity extends AppCompatActivity {
         });
 
         textView.setText("0.0 Kilometers");
-
+        textView2.setText(("0.0 kg of C02"));
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+        //check condition
         if (requestCode == 100 && resultCode == RESULT_OK){
             Place place = Autocomplete.getPlaceFromIntent(data);
             if(sType.equals("source")){
@@ -123,7 +133,9 @@ public class MapActivity extends AppCompatActivity {
 
         distance = distance * 1.609344;
 
-        textView.setText(String.format(Locale.US, "%2f kilometers", distance));
+        textView.setText(String.format(Locale.US, "%.2f kilometers", distance));
+        textView2.setText(String.format(Locale.US,"%.2f kg of CO2", (distance * 10)/365 ));
+
 
 
     }

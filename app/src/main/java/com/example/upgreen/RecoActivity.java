@@ -22,7 +22,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.joda.time.DateTime;
 import org.joda.time.MutableDateTime;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -35,6 +34,7 @@ public class RecoActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private String onlineUserID = "";
     private DatabaseReference totalRef, personalRef;
+    private int totalAmountBudget = 0;
 
     private TextView totalEmissionTextView, analyticsTransportAmount,analyticsFoodAmount,analyticsElectricityAmount, monthSpentAmount, monthRatioSpending, linearLayoutAnalysis;
 
@@ -88,6 +88,7 @@ public class RecoActivity extends AppCompatActivity {
         getTotalDailyHouseExpenses();
         getTotalDaySpending();
 
+
     }
 
     private void getTotalDailyTransportExpense() {
@@ -113,8 +114,10 @@ public class RecoActivity extends AppCompatActivity {
                         int pTotal = Integer.parseInt(String.valueOf(total));
                         totalAmount += pTotal;
                         analyticsTransportAmount.setText("Spent: " + totalAmount);
-                        if (totalAmount > 30){
+                        if (totalAmount > 100){
                             progress_ratio_transport.setText("Reduce transportation footprint by using public transportation.");
+                        }else{
+                            progress_ratio_transport.setText("Doing great!");
                         }
                     }
                     personalRef.child("dayTrans").setValue(totalAmount);
@@ -153,8 +156,10 @@ public class RecoActivity extends AppCompatActivity {
                         int pTotal = Integer.parseInt(String.valueOf(total));
                         totalAmount += pTotal;
                         analyticsFoodAmount.setText("Spent: " + totalAmount);
-                        if (totalAmount > 30){
+                        if (totalAmount > 100){
                             progress_ratio_food.setText("Lessen consumption of food with high CO2 emission.");
+                        }else{
+                            progress_ratio_food.setText("Doing great!");
                         }
                     }
                     personalRef.child("dayFood").setValue(totalAmount);
@@ -193,8 +198,10 @@ public class RecoActivity extends AppCompatActivity {
                         totalAmount += pTotal;
                         analyticsElectricityAmount.setText("Spent: " + totalAmount);
 
-                        if (totalAmount > 30){
+                        if (totalAmount > 100){
                             progress_ratio_elec.setText("Lessen your electricity consumption.");
+                        }else{
+                            progress_ratio_elec.setText("Doing great!");
                         }
                     }
                     personalRef.child("dayHouse").setValue(totalAmount);

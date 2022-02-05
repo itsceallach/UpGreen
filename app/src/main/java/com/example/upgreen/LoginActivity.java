@@ -37,9 +37,6 @@ public class LoginActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
-        toolbar = findViewById(R.id.loginToolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Login");
 
         mAuth = FirebaseAuth.getInstance();
         loader = new ProgressDialog(this);

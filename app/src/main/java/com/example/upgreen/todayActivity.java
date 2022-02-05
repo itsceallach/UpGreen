@@ -169,6 +169,7 @@ public class todayActivity extends AppCompatActivity {
                 }
                 if (Item.equals("select item")){
                     Toast.makeText(todayActivity.this, "Select a valid item", Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 if (TextUtils.isEmpty(notes)){
                     note.setError("Note is required");

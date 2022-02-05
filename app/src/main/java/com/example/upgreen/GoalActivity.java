@@ -129,7 +129,7 @@ public class GoalActivity extends AppCompatActivity {
 
                         totalammount+=data.getAmount();
 
-                        String sttotal=String.valueOf("Month GOAL: "+totalammount);
+                        String sttotal=String.valueOf("Month Goal: "+totalammount);
 
                         totalEmissionAmountTextView.setText(sttotal);
 

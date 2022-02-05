@@ -37,9 +37,6 @@ public class RegistrationActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_registration);
 
-        toolbar = findViewById(R.id.loginToolbar);
-        setSupportActionBar(toolbar);
-        //getSupportActionBar().setTitle("Registration");
 
         mAuth = FirebaseAuth.getInstance();
         loader = new ProgressDialog(this);
